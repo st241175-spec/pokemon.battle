@@ -572,24 +572,24 @@ const AEGISLASH_FORM = {
 
 // ===== 定数 =====
 const Z_MOVE_NAMES = {
-  ノーマル: "ウルトラダッシュアタック",
-  くさ: "ブルームシャインエクストラ",
-  ほのお: "ダイナミックフルフレイム",
-  みず: "スーパーアクアトルネード",
-  でんき: "スパーキングギガボルト",
-  ひこう: "ファイナルダイブクラッシュ",
+  ノーマル: "ｳﾙﾄﾗﾀﾞｯｼｭｱﾀｯｸ",
+  くさ: "ﾌﾞﾙｰﾑｼｬｲﾝｴｸｽﾄﾗ",
+  ほのお: "ﾀﾞｲﾅﾐｯｸﾌﾙﾌﾚｲﾑ",
+  みず: "ｽｰﾊﾟｰｱｸｱﾄﾙﾈｰﾄﾞ",
+  でんき: "ｽﾊﾟｰｷﾝｸﾞｷﾞｶﾞﾎﾞﾙﾄ",
+  ひこう: "ﾌｧｲﾅﾙﾀﾞｲﾌﾞｸﾗｯｼｭ",
   かくとう: "全力無双激烈拳",
-  じめん: "ライジングランドオーバー",
+  じめん: "ﾗｲｼﾞﾝｸﾞﾗﾝﾄﾞｵｰﾊﾞｰ",
   むし: "絶対捕食回転斬",
-  いわ: "ワールズエンドフォール",
-  あく: "ブラックホールイクリプス",
-  こおり: "レイジングジオフリーズ",
-  どく: "アシッドポイズンデリート",
+  いわ: "ﾜｰﾙｽﾞｴﾝﾄﾞﾌｫｰﾙ",
+  あく: "ﾌﾞﾗｯｸﾎｰﾙｲｸﾘﾌﾟｽ",
+  こおり: "ﾚｲｼﾞﾝｸﾞｼﾞｵﾌﾘｰｽﾞ",
+  どく: "ｱｼｯﾄﾞﾎﾟｲｽﾞﾝﾃﾞﾘｰﾄ",
   はがね: "超絶螺旋連撃",
   ゴースト: "無限暗夜への誘い",
-  エスパー: "マキシマムサイブレイカー",
-  ドラゴン: "アルティメットドラゴンバーン",
-  フェアリー: "ラブリースターインパクト"
+  エスパー: "ﾏｷｼﾏﾑｻｲﾌﾞﾚｲｶｰ",
+  ドラゴン: "ｱﾙﾃｨﾒｯﾄﾄﾞﾗｺﾞﾝﾊﾞｰﾝ",
+  フェアリー: "ﾗﾌﾞﾘｰｽﾀｰｲﾝﾊﾟｸﾄ"
 };
 
 // ===== 威力計算 =====
@@ -654,7 +654,6 @@ function createZMove(pokemon) {
         category: "physical",
         pp: 1,
         currentPp: 1,
-        critPriority:1,
         isZMove: true
     };
 }
@@ -667,7 +666,6 @@ if (pokemon.name === "アシレーヌ") {
         category: "special",
         pp: 1,
         currentPp: 1,
-        critPriority:1,
         isZMove: true
     };
 }
@@ -729,14 +727,13 @@ if (pokemon.name === "カビゴン") {
 }
 if (pokemon.name === "ポリゴン2") {
     return {
-        name: "リサーチザテトラ",
+        name: "ﾘｻｰﾁ･ｻﾞ･ﾃﾄﾗ",
         type: "ノーマル",
         power: 170,
         accuracy: 999,
         category: "special",
         pp: 1,
         currentPp: 1,
-        critPriority:1,
         isDynamicType: true,
         secondary: [{effect: "stat",stat: "defense",stage: 2,self: true,chance: 100},{effect: "stat",stat: "spDefense",stage: 2,self: true,chance: 100}],
         isZMove: true
@@ -1528,7 +1525,7 @@ function updateMoves() {
     const zMove = createZMove(playerPokemon);
 
     const zBtn = document.createElement('button');
-    zBtn.textContent = `Z技:${zMove.name}`;
+    zBtn.textContent = `${zMove.name}`;
     zBtn.className =
         "border-2 border-yellow-500 bg-yellow-200 rounded p-1";
 
