@@ -393,7 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const MEGA_DATA = {
     "ガブリアス": {
-        stone: "メガストーン",
+        stone: "なにも持たせない",
         form: {
             name: "ギガガブリアス",
             types: ["ドラゴン","じめん"],
@@ -553,7 +553,7 @@ const MEGA_DATA = {
         }
     },
     "トレーニング": {
-        stone: "メガストーン",
+        stone: なにも持たせない",
         form: {
             name: "ウルトラネクロズマ",
             types: ["エスパー","ドラゴン"],
@@ -663,6 +663,15 @@ function canMegaEvolve(pokemon){
     if (!mega) return false;
 
     return pokemon.item?.name === "メガストーン";
+}
+    
+function canMegaEvolve(pokemon){
+    if (pokemon.megaEvolved) return false;
+
+    const mega = MEGA_DATA[pokemon.name];
+    if (!mega) return false;
+
+    return pokemon.item?.name === "なにも持たせない";
 }
 
 // ===== Zワザ生成 =====
