@@ -656,21 +656,13 @@ function canUseZMove(pokemon) {
   return true;
 }
 
-function canMegaEvolve(pokemon){
+function canMegaEvolve(pokemon) {
     if (pokemon.megaEvolved) return false;
 
     const mega = MEGA_DATA[pokemon.name];
     if (!mega) return false;
 
-    return pokemon.item?.name === "メガストーン";
-}
-    function canMegaEvolve(pokemon){
-    if (pokemon.megaEvolved) return false;
-
-    const mega = MEGA_DATA[pokemon.name];
-    if (!mega) return false;
-
-    return pokemon.item?.name === "なにも持たせない";
+    return pokemon.item?.name === mega.stone;
 }
     
 
