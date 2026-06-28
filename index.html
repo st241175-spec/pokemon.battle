@@ -665,14 +665,6 @@ function canMegaEvolve(pokemon){
     return pokemon.item?.name === "メガストーン";
 }
     
-function canMegaEvolve(pokemon){
-    if (pokemon.megaEvolved) return false;
-
-    const mega = MEGA_DATA[pokemon.name];
-    if (!mega) return false;
-
-    return pokemon.item?.name === "なにも持たせない";
-}
 
 // ===== Zワザ生成 =====
 function createZMove(pokemon) {
