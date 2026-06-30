@@ -117,10 +117,6 @@
     </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <audio id="bgm" loop>
-        <source src="battle.mp3" type="audio/mpeg">
-    </audio>
-
     <div id="selection-tooltip" class="absolute hidden nes-container bg-white/95 p-2 text-xs z-50 w-auto pointer-events-none"></div>
     <div id="move-tooltip" class="absolute hidden nes-container bg-white/95 p-2 text-xs z-50 w-auto pointer-events-none"></div>
 
@@ -1292,8 +1288,6 @@ function determineOpponentItem(pokemon) {
 }
     
     async function startBattleSequence() {
-        bgm.volume = 0.5;
-        bgm.play().catch(() => {});
         disableMoves();
         await handleAbilityEffectsOnEntry();
          if(playerPokemon.ability === "いかく" && opponentPokemon.ability !== "クリアボディ") {
@@ -4463,8 +4457,26 @@ else if (move.category === 'special') {
         if (attacker.ability === 'ブレインフォース' && move.category && move.power <= 2000) movePower *= 1.25;
         if (attacker.ability === 'アナライズ' && move.category === 'special') movePower *= 1.3;
         if (attacker.ability === 'マルチタイプ' && move.power <= 70) movePower *= 1.5;
-        if (attacker.status === 'burn' && move.category === 'physical' && move.name !== 'ボディプレス') { movePower *= 0.5; }
-        if (weather.type === 'rain') {
+
+const hasStatus =
+    attacker.status &&
+    attacker.status !== "none";
+
+if (
+    hasStatus &&
+    move.category === "physical" &&
+    attacker.ability === "こんじょう"
+) {
+    movePower *= 1.5;
+} else if (
+    attacker.status === "burn" &&
+    move.category === "physical" &&
+    move.name !== "ボディプレス"
+) {
+    movePower *= 0.5;
+}
+
+if (weather.type === 'rain') {
     if (move.type === 'みず') movePower *= 1.5;
     if (move.type === 'ほのお') movePower *= 0.5;
 };
