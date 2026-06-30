@@ -304,7 +304,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'せんせいのツメ': { name: 'せんせいのツメ', description: '30%で先制できる'},
         'おうじゃのしるし': { name: 'おうじゃのしるし', description: '30%で怯ませる。'},
         'しろいハーブ': { name: 'しろいハーブ', description: '下がった能力が元に戻る。'},
-        'きあいのハチマキ': { name: 'きあいのハチマキ', description: '30%でHP1耐える'},
+        'きあいのハチマキ': { name: 'きあいのハチマキ', description: '30%でHP1耐える。'},
+        'かえんだま': { name: 'かえんだま', description: 'やけどになる。あっつ。'},
         'Zクリスタル': { name: 'Zクリスタル', description: 'Z技が使える。'},
         'メガストーン': { name: 'メガストーン', description: 'メガシンカできる。'},
         'なにも持たせない': { name: 'なにも持たせない', description: 'とくに効果なし。'},
@@ -3970,6 +3971,20 @@ if (opponentPokemon.ability === 'ムラッけ') {
         field.type = 'none';
         await showMessage('あしもとは もとに もどった！');
         updateFieldIndicator();
+    }
+}
+       // かえんだま
+for (const pokemon of [playerPokemon, opponentPokemon]) {
+    if (
+    pokemon.item?.name === "かえんだま" &&
+    pokemon.status === null
+) {
+        pokemon.status = "burn";
+        await showMessage(
+            `${pokemon.name} は かえんだまで やけどを おった！`
+        );
+        updateHpBars();
+        updateStatusMarkers();
     }
 }
         if(weather.type === 'sandstorm') {
